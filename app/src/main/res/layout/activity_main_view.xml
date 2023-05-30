@@ -1,0 +1,378 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainView">
+
+    <RelativeLayout
+        android:id="@+id/topNav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Main"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="List"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/NewCard"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/topNav"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_custom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="Add New Task" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/add_me_icon" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/upcomingTitle"
+        android:layout_below="@id/NewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming"
+        android:textSize="24dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_variable_font_wdth"/>
+    
+    <RelativeLayout
+        android:id="@+id/UpcomingCard"
+        android:layout_below="@id/upcomingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_text_custom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imagefamer"/>
+        <TextView
+            android:id="@+id/titleCard"
+            android:layout_toRightOf="@id/image"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick the plants"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due: 15/02/2022 14:00"
+            android:layout_below="@id/titleCard"
+            android:layout_toRightOf="@id/image"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Details"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/lighter_green"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/farmland_3"
+           android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/categoriesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Categories"
+        android:layout_below="@id/UpcomingCard"
+        android:layout_marginTop="40dp"
+        android:textSize="24dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:scrollbars="horizontal"
+        android:id="@+id/categoryRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/categoriesTxt"
+       />
+
+<!--    <ScrollView-->
+<!--        android:id="@+id/categoryScroll"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/categoryRecyclerView"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        >-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="133dp"-->
+<!--                android:layout_height="178dp"-->
+<!--                android:background="@drawable/edit_text_custom"-->
+<!--                android:layout_marginLeft="20dp">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cattleellipse"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cow"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="20dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cattle"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="133dp"-->
+<!--                android:layout_height="178dp"-->
+<!--                android:background="@drawable/edit_text_custom"-->
+<!--                android:layout_marginLeft="20dp">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cattleellipse"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cow"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="20dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cattle"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--            </RelativeLayout>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="133dp"-->
+<!--                android:layout_height="178dp"-->
+<!--                android:background="@drawable/edit_text_custom"-->
+<!--                android:layout_marginLeft="20dp">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cattleellipse"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cow"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="20dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cattle"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--            </RelativeLayout>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="133dp"-->
+<!--                android:layout_height="178dp"-->
+<!--                android:background="@drawable/edit_text_custom"-->
+<!--                android:layout_marginLeft="20dp">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cattleellipse"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/cow"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="20dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cattle"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--            </RelativeLayout>-->
+<!--"-->
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/icons"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="59dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/accountsvg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/main"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mainsvg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/settingssvg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/main"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_below="@id/icons"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/accountTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="59dp"
+                android:layout_marginEnd="100dp"
+                android:text="me"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/mainTxt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mainTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="main"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/settingsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="52dp"
+                android:layout_marginBottom="1dp"
+                android:text="settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/mainTxt"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+
+
+

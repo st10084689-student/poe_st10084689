@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="133dp"
+    android:layout_height="178dp"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_marginLeft="20dp"
+    app:cardCornerRadius="15dp"
+    android:elevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="133dp"
+            android:layout_height="178dp"
+            >
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryImage"
+        android:src="@drawable/cow"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backgroundImage"
+                android:background="@drawable/cattleellipse"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryName"
+        android:text="category name"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
