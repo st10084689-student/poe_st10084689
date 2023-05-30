@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Big Farma</string>
+    <string name="app_name">Sams farma</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_task_lists">taskLists</string>
+    <string name="title_activity_task_list">taskList</string>
 </resources>

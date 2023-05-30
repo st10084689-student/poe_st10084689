@@ -4,53 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainView">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:elevation="20dp"
+        android:translationZ="8dp"
+        android:id="@+id/topNav"
+        >
 
     <RelativeLayout
-        android:id="@+id/topNav"
+        android:elevation="20dp"
+
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="90dp"
         android:orientation="vertical"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
+
             >
         <TextView
+            android:background="@drawable/green_circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:paddingLeft="19dp"
+            android:layout_toLeftOf="@id/listText"
+
             android:text="Main"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="List"/>
+            <TextView
+                android:id="@+id/listText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="List" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="About"
-            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/listText"
+            android:layout_marginLeft="70dp"
             android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </RelativeLayout>
-
+    </androidx.cardview.widget.CardView>
     <RelativeLayout
 
         android:id="@+id/NewCard"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_below="@id/topNav"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/edit_text_custom">
 
         <TextView
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -58,8 +75,8 @@
             android:text="Add New Task" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
@@ -76,16 +93,17 @@
         android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:fontFamily="@font/open_sans_variable_font_wdth"/>
-    
+
     <RelativeLayout
         android:id="@+id/UpcomingCard"
         android:layout_below="@id/upcomingTitle"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/edit_text_custom"
+        android:layout_height="120dp"
+        android:background="@drawable/upcoming_background_custom"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp">
+
         <ImageView
             android:id="@+id/image"
             android:layout_centerVertical="true"
@@ -98,16 +116,18 @@
             android:layout_toRightOf="@id/image"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick the plants"/>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Due: 15/02/2022 14:00"
+            android:textSize="15dp"
             android:layout_below="@id/titleCard"
             android:layout_toRightOf="@id/image"
             android:layout_marginLeft="20dp"
@@ -150,7 +170,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:scrollbars="horizontal"
+        android:scrollbars="none"
         android:id="@+id/categoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -274,11 +294,12 @@
 <!--"-->
 <!--        </LinearLayout>-->
 <!--    </ScrollView>-->
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
+
         >
         <androidx.constraintlayout.widget.ConstraintLayout
            android:id="@+id/icons"
@@ -296,13 +317,17 @@
                 android:background="@drawable/accountsvg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/main"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
                 android:id="@+id/main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:background="@drawable/mainsvg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -218,7 +218,6 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/underline" />
         </RelativeLayout>
+
     </RelativeLayout>
-
-
 </RelativeLayout>
