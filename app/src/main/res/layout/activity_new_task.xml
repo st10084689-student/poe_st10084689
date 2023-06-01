@@ -8,6 +8,7 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_above="@id/BottomNav">
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -16,7 +17,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/TopNav"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         app:cardElevation="10dp"
@@ -64,6 +65,7 @@
         android:textColor="@color/black"
         android:textSize="25sp" />
     <EditText
+        android:id="@+id/titeInput"
         android:layout_below="@id/titleTxt"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -91,6 +93,7 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
         <EditText
+            android:id="@+id/DecriptionInput"
             android:layout_below="@id/DescriptionTxt"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -162,10 +165,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_variable_font_wdth"
-            android:text="Description:"
+            android:text="Time:"
             android:textColor="@color/black"
             android:textSize="25sp" />
         <EditText
+            android:id="@+id/TimeInput"
             android:layout_below="@id/TimeTxt"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -186,67 +190,83 @@
             android:layout_marginTop="20dp"
             />
 
-    <RelativeLayout
-        android:layout_below="@id/cameraPrompt"
-        android:id="@+id/bottomRelativelayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/bottomRelativelayout"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/cameraPrompt"-->
 
-        >
-            <!--        android:layout_above="@id/BottomNav"-->
-        <ImageView
-            android:id="@+id/imgBottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/new_task_bottom" />
+<!--                android:layout_marginTop="0dp">-->
+<!--                &lt;!&ndash;        android:layout_above="@id/BottomNav"&ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/imgBottom"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:background="@drawable/new_task_bottom"-->
+<!--                    />-->
 
-        <RelativeLayout
-            android:id="@+id/imgEnterBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="60dp">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/imgEnterBtn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginBottom="60dp">-->
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/enter_btn" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:background="@drawable/enter_btn" />-->
 
-            <ImageButton
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/carrot" />
-        </RelativeLayout>
+<!--                    <ImageButton-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:background="@drawable/carrot" />-->
+<!--                </RelativeLayout>-->
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginBottom="10dp"-->
 
-            >
+<!--                    >-->
 
-            <TextView
-                android:id="@+id/loginTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_variable_font_wdth"
-                android:text="Login"
+<!--                    <TextView-->
+<!--                        android:id="@+id/loginTxt"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/open_sans_variable_font_wdth"-->
+<!--                        android:text="Login"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="34dp" />-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/loginTxt"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:background="@drawable/underline" />-->
+<!--                </RelativeLayout>-->
+<!--            </RelativeLayout>-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/cameraPrompt"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:elevation="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/new_task_button"
+                android:onClick="AddNewTask"
+                android:text="New Task"
                 android:textColor="@color/white"
-                android:textSize="34dp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/loginTxt"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/underline" />
-        </RelativeLayout>
-    </RelativeLayout>
+                android:textSize="20sp"/>
         </RelativeLayout>
     </ScrollView>
 

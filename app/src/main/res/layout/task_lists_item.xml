@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp"
+    android:background="@drawable/edit_text_custom">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_task_item"
+    >
+
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/sample_image" />
+
+    <TextView
+    android:id="@+id/TaskName"
+    android:layout_width="wrap_content"
+    android:layout_toRightOf="@id/backgroundImage"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="20dp"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/open_sans_variable_font_wdth"
+    android:text="category name"
+    android:textColor="@color/Custom_Grey"
+    android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/DueTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Due:"
+        android:layout_toRightOf="@id/backgroundImage"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
+        android:layout_below="@id/TaskName"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+
+        />
+    <TextView
+        android:id="@+id/DateTxt"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/DueTxt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
+        android:text="15/02/2022"
+        android:layout_below="@id/TaskName"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/TimeTxt"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/DateTxt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
+        android:text="14:00"
+        android:layout_below="@id/TaskName"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+    
+    <ImageView
+        android:id="@+id/CategoryImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/farmland_3"
+        android:padding="5dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/cow"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/light_green"
+        android:layout_marginBottom="5dp"
+        android:text="Details"/>
+
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>

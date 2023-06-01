@@ -13,28 +13,27 @@
     android:layout_centerHorizontal="true">
 
     <TextView
-        android:id="@+id/txtName"
+        android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Name:"
-
+        android:text="Email:"
+        android:textSize="20sp"
         android:fontFamily="@font/open_sans_variable_font_wdth"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/edtTxtName"
-        app:layout_constraintEnd_toEndOf="@+id/edtTxtName"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtEmail"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtTxtName" />
+        app:layout_constraintStart_toStartOf="@+id/edtTxtEmail" />
 
     <EditText
-        android:id="@+id/edtTxtName"
+        android:id="@+id/edtTxtEmail"
         android:layout_width="300dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:background="@drawable/edit_text_custom"
-        android:layout_below="@id/txtName"
+        android:layout_below="@id/txtEmail"
         android:paddingLeft="16dp"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +52,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
+            android:textSize="20sp"
             android:id="@+id/txtPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         <EditText
             android:id="@+id/edtTxtPassword"
             android:layout_width="300dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txtPassword"
             android:paddingLeft="16dp"
             android:layout_centerHorizontal="true"
@@ -149,12 +149,14 @@
     android:layout_alignParentBottom="true">
 
     <ImageView
+        android:onClick="loginClick"
         android:id="@+id/imgBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bottom_eclipse"/>
     <RelativeLayout
+        android:onClick="loginClick"
         android:id="@+id/imgEnterBtn"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
@@ -168,12 +170,14 @@
             />
 
         <ImageButton
+            android:onClick="loginClick"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
             android:background="@drawable/carrot" />
     </RelativeLayout>
    <RelativeLayout
+       android:onClick="loginClick"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginBottom="30dp"

@@ -37,6 +37,7 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
+
         holder.CategoryText.setText(categories.get(position).getName());
         holder.CategoryText.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,13 +21,13 @@
 
             android:fontFamily="@font/open_sans_variable_font_wdth"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/edtTxtName"
-            app:layout_constraintEnd_toEndOf="@+id/edtTxtName"
+            app:layout_constraintBottom_toTopOf="@+id/SignUpEmail"
+            app:layout_constraintEnd_toEndOf="@+id/SignUpEmail"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edtTxtName" />
+            app:layout_constraintStart_toStartOf="@+id/SignUpEmail" />
 
         <EditText
-            android:id="@+id/edtTxtName"
+            android:id="@+id/SignUpEmail"
             android:layout_width="300dp"
             android:layout_height="35dp"
             android:background="@drawable/edit_text_custom"
@@ -59,13 +59,13 @@
             android:text="Password:"
             android:fontFamily="@font/open_sans_variable_font_wdth"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/edtTxtPassword"
-            app:layout_constraintEnd_toEndOf="@+id/edtTxtPassword"
+            app:layout_constraintBottom_toTopOf="@+id/SignUpPassword"
+            app:layout_constraintEnd_toEndOf="@+id/SignUpPassword"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edtTxtPassword" />
+            app:layout_constraintStart_toStartOf="@+id/SignUpPassword" />
 
         <EditText
-            android:id="@+id/edtTxtPassword"
+            android:id="@+id/SignUpPassword"
             android:layout_width="300dp"
             android:layout_height="35dp"
             android:layout_below="@id/txtPassword"
@@ -89,20 +89,20 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:id="@+id/txtConfirmPassword"
+            android:id="@+id/txtSignUpConfirmPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Confirm Password:"
             android:fontFamily="@font/open_sans_variable_font_wdth"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/edtTxtConfirmPassword"
-            app:layout_constraintEnd_toEndOf="@+id/edtTxtConfirmPassword"
+            app:layout_constraintBottom_toTopOf="@+id/SignUpConfirmPassword"
+            app:layout_constraintEnd_toEndOf="@+id/SignUpConfirmPassword"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edtTxtConfirmPassword" />
+            app:layout_constraintStart_toStartOf="@+id/SignUpConfirmPassword" />
 
         <EditText
-            android:id="@+id/edtTxtConfirmPassword"
+            android:id="@+id/SignUpConfirmPassword"
             android:layout_width="300dp"
             android:layout_height="35dp"
             android:background="@drawable/edit_text_custom"
@@ -167,6 +167,7 @@
         android:layout_marginBottom="0dp">
 
         <ImageView
+            android:onClick="SignUpUser"
             android:id="@+id/imgBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -182,11 +183,13 @@
             android:layout_marginBottom="90dp">
 
             <ImageView
+                android:onClick="SignUpUser"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/enter_btn" />
 
             <ImageButton
+
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
@@ -203,6 +206,7 @@
             >
 
             <TextView
+                android:onClick="SignUpUser"
                 android:id="@+id/loginTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

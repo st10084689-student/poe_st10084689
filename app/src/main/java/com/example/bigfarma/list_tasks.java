@@ -4,42 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainView extends AppCompatActivity {
- private RecyclerView categoryRecView;
-    private String TAG = "Main View";
-private RelativeLayout newTask;
+public class list_tasks extends AppCompatActivity {
+
+    private RecyclerView TaskRecycler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_view);
-         categoryRecView = findViewById(R.id.categoryRecyclerView);
-        newTask = findViewById(R.id.NewCard);
+        setContentView(R.layout.activity_list_tasks);
+        innit();
+        blah();
+    }
 
-        newTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainView.this, NewTask.class);
-                startActivity(intent);
+    public void innit(){
+        TaskRecycler = findViewById(R.id.taskRecyclerView);
+    }
 
+    public void blah(){
 
-            }
-        });
+        ListTaskRecyclerAdapter adapter = new ListTaskRecyclerAdapter(list_tasks.this);
 
-         CategoryRecyclerAdapter adapter = new CategoryRecyclerAdapter(this);
-
-         categoryRecView.setAdapter(adapter);
-         categoryRecView.setLayoutManager(new LinearLayoutManager(this,categoryRecView.HORIZONTAL,false));
+        TaskRecycler.setAdapter(adapter);
+        TaskRecycler.setLayoutManager(new LinearLayoutManager(this,TaskRecycler.VERTICAL,false));
 
 //         ArrayList<Category> categories = new ArrayList<>();
 //         categories.add(new Category("HomeWork","https://www.bing.com/ck/a?!&&p=cb7ddccb76127e66JmltdHM9MTY4NTQwNDgwMCZpZ3VpZD0xMjU5ZDZiZS1mMTk1LTY3YTAtMmJmYS1jNDc0ZjA2ODY2ZTMmaW5zaWQ9NTUyNQ&ptn=3&hsh=3&fclid=1259d6be-f195-67a0-2bfa-c474f06866e3&u=a1L2ltYWdlcy9zZWFyY2g_cT1JTUFHRVMgT0YgSE9NRVdPUksmRk9STT1JUUZSQkEmaWQ9ODIxRjUyNjAwQ0E5NDlCRTZFQkQ0OEQ4RDQ1RkE1QkFFMTFGQzdCRA&ntb=1"));
@@ -48,15 +39,8 @@ private RelativeLayout newTask;
 //        categories.add(new Category("HomeWork","C:\\Users\\jelid\\OneDrive\\Pictures\\Saved Pictures\\anime-graffiti-cars-lime-green-nsx.webp"));
 
         Utility util = new Utility();
-        ArrayList<Category> categories = new ArrayList<>();
-        categories = util.getAllCategories();
-         adapter.setCategories(categories);
+        ArrayList<Task> tasks = new ArrayList<>();
+        tasks = util.getNewTask();
+        adapter.setTasks(tasks);
     }
-
-    public void ToList(View view){
-        Intent toList = new Intent(MainView.this, list_tasks.class);
-        startActivity(toList);
-    }
-
 }
-
