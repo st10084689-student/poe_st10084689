@@ -12,25 +12,21 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListTaskFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ListTaskFragment extends Fragment {
+
+public class TaskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    RecyclerView TaskRecycler;
+    private RecyclerView TaskRecycler;
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ListTaskFragment() {
+    public TaskFragment() {
         // Required empty public constructor
     }
 
@@ -43,8 +39,8 @@ public class ListTaskFragment extends Fragment {
      * @return A new instance of fragment ListTaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListTaskFragment newInstance(String param1, String param2) {
-        ListTaskFragment fragment = new ListTaskFragment();
+    public static TaskFragment newInstance(String param1, String param2) {
+        TaskFragment fragment = new TaskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,21 +61,21 @@ public class ListTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_list_task, container, false);
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
         innit(view);
-        blah();
+        blah(view);
         return view;
     }
     public void innit(View view){
         TaskRecycler = view.findViewById(R.id.taskRecyclerView);
     }
 
-    public void blah(){
+    public void blah(View view){
 
-        ListTaskRecyclerAdapter adapter = new ListTaskRecyclerAdapter(requireContext());
+        ListTaskRecyclerAdapter adapter = new ListTaskRecyclerAdapter(view.getContext());
 
         TaskRecycler.setAdapter(adapter);
-        TaskRecycler.setLayoutManager(new LinearLayoutManager(requireContext(),TaskRecycler.VERTICAL,false));
+        TaskRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(),TaskRecycler.VERTICAL,false));
 
 //         ArrayList<Category> categories = new ArrayList<>();
 //         categories.add(new Category("HomeWork","https://www.bing.com/ck/a?!&&p=cb7ddccb76127e66JmltdHM9MTY4NTQwNDgwMCZpZ3VpZD0xMjU5ZDZiZS1mMTk1LTY3YTAtMmJmYS1jNDc0ZjA2ODY2ZTMmaW5zaWQ9NTUyNQ&ptn=3&hsh=3&fclid=1259d6be-f195-67a0-2bfa-c474f06866e3&u=a1L2ltYWdlcy9zZWFyY2g_cT1JTUFHRVMgT0YgSE9NRVdPUksmRk9STT1JUUZSQkEmaWQ9ODIxRjUyNjAwQ0E5NDlCRTZFQkQ0OEQ4RDQ1RkE1QkFFMTFGQzdCRA&ntb=1"));

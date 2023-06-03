@@ -120,15 +120,19 @@
             android:text="Start Date:"
             android:textColor="@color/black"
             android:textSize="25sp" />
+
         <EditText
             android:id="@+id/StartDateEditTxt"
-            android:layout_below="@id/StartDateTxt"
             android:layout_width="160dp"
             android:layout_height="40dp"
-            android:background="@drawable/edit_text_custom"
+            android:layout_below="@id/StartDateTxt"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_custom"
             android:paddingLeft="20dp"
-            />
+            android:focusable="false"
+            android:onClick="showStartDatePickerDialog" />
+
         <TextView
             android:id="@+id/EndDateTxt"
             android:layout_toRightOf="@id/StartDateTxt"
@@ -149,6 +153,8 @@
             android:background="@drawable/edit_text_custom"
             android:layout_marginRight="20dp"
             android:paddingLeft="20dp"
+            android:focusable="false"
+            android:onClick="showEndDatePickerDialog"
             />
 
     </RelativeLayout>
@@ -176,6 +182,8 @@
             android:background="@drawable/edit_text_custom"
             android:layout_marginRight="20dp"
             android:paddingLeft="20dp"
+            android:focusable="false"
+            android:onClick="showTimePickerDialog"
             />
     </RelativeLayout>
 
@@ -188,7 +196,16 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/TimeRelativeLayout"
             android:layout_marginTop="20dp"
+
             />
+            <ImageView
+                android:id="@+id/capturedImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/cameraPrompt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop"/>
 
 <!--            <RelativeLayout-->
 <!--                android:id="@+id/bottomRelativelayout"-->
@@ -256,7 +273,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/cameraPrompt"
+                android:layout_below="@id/capturedImage"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
