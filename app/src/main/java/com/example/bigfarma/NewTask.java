@@ -79,6 +79,16 @@ public class NewTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File FilePhoto = null;
+                try{
+
+                    FilePhoto = createImageFile();
+                    Log.d(TAG, "onClick: "+FilePhoto);
+                }
+                catch(IOException ei){
+
+                }
+
                 startActivityForResult(intent, 0);
             }
         });
@@ -87,21 +97,21 @@ public class NewTask extends AppCompatActivity {
 
 
 
-//    private File createImageFile() throws IOException {
-//        // Create an image file name
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-//        String imageFileName = "JPEG_" + timeStamp + "_";
-//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//        File image = File.createTempFile(
-//                imageFileName,  /* prefix */
-//                ".jpg",         /* suffix */
-//                storageDir      /* directory */
-//        );
-//
-//        // Save a file path for use with ACTION_VIEW intents
-//        currentPhotoPath = image.getAbsolutePath();
-//        return image;
-//    }
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
@@ -191,11 +201,12 @@ public class NewTask extends AppCompatActivity {
         int id =  util.getTaskId();
 //        ArrayList<Task> This = new ArrayList<>();
 //        This.add(new Task(id, Title.getText().toString(), Desc.getText().toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString()));
-        util.setNewTask(id, Title.getText().toString(), Desc.getText().toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString());
+        util.setNewTask(id, Title.getText().toString(), currentPhotoPath,Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString());
 
         for (Task task : util.getNewTask()) {
             System.out.println("Task ID: " + task.getId());
             System.out.println("Title: " + task.getTitle());
+            System.out.println("Title: " + task.getImageUrl());
             System.out.println("Description: " + task.getDesc());
             System.out.println("End Date: " + task.getEndDate());
             System.out.println("Start Date: " + task.getStartDate());

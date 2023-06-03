@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,13 +36,13 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListTaskRecyclerAdapter.ViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         holder.Name.setText(tasks.get(position).getTitle());
 
-//        Glide.with(context)
-//                .asBitmap().load(tasks.get(position).getImageUrl())
-//                .into(holder.BackgroundImage);
+        Glide.with(context).asBitmap()
+               .load(tasks.get(position).getImageUrl())
+                .into(holder.BackgroundImage);
     }
 
     @Override
@@ -65,7 +64,7 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
         public ViewHolder(View itemView){
             super(itemView);
 
-            BackgroundImage = itemView.findViewById(R.id.categoryImage);
+            BackgroundImage = itemView.findViewById(R.id.Image);
             Name = itemView.findViewById(R.id.TaskName);
             Date = itemView.findViewById(R.id.DateTxt);
             Time = itemView.findViewById(R.id.TimeTxt);
@@ -74,8 +73,8 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
 
     }
 
-    public void setTasks(ArrayList<Task> _tasks) {
-        this.tasks = _tasks;
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
         notifyDataSetChanged();
     }
 }

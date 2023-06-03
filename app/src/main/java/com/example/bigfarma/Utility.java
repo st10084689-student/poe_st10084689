@@ -74,7 +74,7 @@ public class Utility {
 
     private static void initAllTask() {
         String Title="Homework";
-        String ImageUrl = "java";
+        String ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ2HCQwNOetaK7RAV-XTjKdwNsOlGce2D_QljqHUMI&s";
         String Description = "java";
         String EndDate = "java";
         String StartDate = "java";
@@ -85,7 +85,7 @@ public class Utility {
         newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time));
 
          Title="Homework";
-         ImageUrl = "java";
+         ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ2HCQwNOetaK7RAV-XTjKdwNsOlGce2D_QljqHUMI&s";
          Description = "java";
          EndDate = "java";
          StartDate = "java";
@@ -96,7 +96,7 @@ public class Utility {
 
 
         Title="Homework";
-        ImageUrl = "java";
+        ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ2HCQwNOetaK7RAV-XTjKdwNsOlGce2D_QljqHUMI&s";
         Description = "java";
         EndDate = "java";
         StartDate = "java";

@@ -19,7 +19,7 @@
 
 
     <ImageView
-        android:id="@+id/backgroundImage"
+        android:id="@+id/Image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
@@ -29,7 +29,7 @@
     <TextView
     android:id="@+id/TaskName"
     android:layout_width="wrap_content"
-    android:layout_toRightOf="@id/backgroundImage"
+    android:layout_toRightOf="@id/Image"
     android:layout_marginTop="40dp"
     android:layout_marginLeft="20dp"
     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Due:"
-        android:layout_toRightOf="@id/backgroundImage"
+        android:layout_toRightOf="@id/Image"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/open_sans_variable_font_wdth"

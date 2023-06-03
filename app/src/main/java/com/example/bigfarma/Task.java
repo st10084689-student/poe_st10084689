@@ -18,11 +18,11 @@ public class Task {
     public Task(int id, String title, String imageUrl, String desc, String startDate, String endDate, String time) {
         this.id = id;
         this.title = title;
-        ImageUrl = imageUrl;
-        Desc = desc;
-        StartDate = startDate;
-        EndDate = endDate;
-        Time = time;
+        this.ImageUrl = imageUrl;
+        this.Desc = desc;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
+        this.Time = time;
     }
 
     public int getId() {
