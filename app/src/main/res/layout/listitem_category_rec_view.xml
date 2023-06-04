@@ -16,20 +16,25 @@
             android:layout_height="178dp"
             >
 
-
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/categoryImage"
-        android:src="@drawable/cow"/>
-
             <ImageView
+                android:src="@drawable/cow"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/backgroundImage"
                 android:background="@drawable/cattleellipse"/>
+
+
+<!--    <ImageView-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/categoryImage"-->
+<!--        android:src="@drawable/cow"/>-->
+
+
     <TextView
 
         android:layout_width="wrap_content"

@@ -3,14 +3,25 @@ package com.example.bigfarma;
 public class Category{
     private int id;
     private String Name;
-    private String ImageUrl;
 
-    public Category(int id, String name, String imageUrl) {
+    private int ImageUrl;
+
+    private int ImageBackgroundUrl;
+
+    public Category(int id, String name, int imageUrl, int imageBackgroundUrl) {
         this.id = id;
         Name = name;
         ImageUrl = imageUrl;
+        ImageBackgroundUrl = imageBackgroundUrl;
     }
 
+    public int getImageBackgroundUrl() {
+        return ImageBackgroundUrl;
+    }
+
+    public void setImageBackgroundUrl(int imageBackgroundUrl) {
+        ImageBackgroundUrl = imageBackgroundUrl;
+    }
 
     public int getId() {
         return id;
@@ -28,11 +39,11 @@ public class Category{
         Name = name;
     }
 
-    public String getImageUrl() {
+    public int getImageUrl() {
         return ImageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(int imageUrl) {
         ImageUrl = imageUrl;
     }
 

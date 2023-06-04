@@ -35,7 +35,7 @@
                 android:layout_marginRight="64dp"
                 android:layout_toLeftOf="@id/listText"
                 android:background="@drawable/green_circle"
-                android:paddingLeft="19dp"
+                android:gravity="center"
                 android:text="Main" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:paddingLeft="19dp"
+                android:gravity="center"
                 android:text="List" />
 
         <TextView
@@ -51,10 +51,10 @@
             android:layout_height="wrap_content"
             android:text="About"
             android:id="@+id/AboutTxt"
-            android:paddingLeft="19dp"
+            android:gravity="center"
             android:layout_toRightOf="@id/listText"
             android:layout_marginLeft="70dp"
-            android:layout_alignParentRight="true"/>
+            />
         </RelativeLayout>
     </RelativeLayout>
 

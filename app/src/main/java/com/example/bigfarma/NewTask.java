@@ -44,10 +44,10 @@ public class NewTask extends AppCompatActivity {
 
         ImageView image;
 
-
+//TODO add a category spinner
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private String currentPhotoPath;
+    private File currentPhotoPath;
 
 
     private SimpleDateFormat dateFormat;
@@ -102,14 +102,17 @@ public class NewTask extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
+                ".png",         /* suffix */
                 storageDir      /* directory */
         );
-
+        Log.d(TAG, "createImageFile: "+image);
         // Save a file path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
+
+        currentPhotoPath = image;
+
         return image;
     }
 
@@ -201,7 +204,7 @@ public class NewTask extends AppCompatActivity {
         int id =  util.getTaskId();
 //        ArrayList<Task> This = new ArrayList<>();
 //        This.add(new Task(id, Title.getText().toString(), Desc.getText().toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString()));
-        util.setNewTask(id, Title.getText().toString(), currentPhotoPath,Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString());
+        util.setNewTask(id, Title.getText().toString(), currentPhotoPath.toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString());
 
         for (Task task : util.getNewTask()) {
             System.out.println("Task ID: " + task.getId());

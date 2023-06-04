@@ -1,18 +1,25 @@
 package com.example.bigfarma;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +46,27 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         holder.Name.setText(tasks.get(position).getTitle());
+        String imagepath= tasks.get(position).getImageUrl();
+        holder.Date.setText(tasks.get(position).getEndDate());
+        holder.Time.setText(tasks.get(position).getTime());
 
-        Glide.with(context).asBitmap()
+        File file = new File(imagepath);
+        if (imagepath != null && !imagepath.isEmpty()&&tasks.get(position).getId()>3) {
+            //TODO Fix picosso method
+            holder.BackgroundImage.setBackground(null);
+            Log.d(TAG, "onBindViewHolder: "+imagepath);
+            Picasso.get().load(file).into(holder.BackgroundImage);
+        }
+        else{
+            holder.BackgroundImage.setBackground(null);
+                    Glide.with(context).asBitmap()
                .load(tasks.get(position).getImageUrl())
+                            .centerCrop()
                 .into(holder.BackgroundImage);
+        }
+
+
+
     }
 
     @Override
@@ -61,6 +85,8 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
 
         private ImageView Category_Image;
 
+        private RelativeLayout relativelayout;
+
         public ViewHolder(View itemView){
             super(itemView);
 
@@ -69,6 +95,8 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
             Date = itemView.findViewById(R.id.DateTxt);
             Time = itemView.findViewById(R.id.TimeTxt);
             Category_Image = itemView.findViewById(R.id.CategoryImage);
+            relativelayout = itemView.findViewById(R.id.relativeCard);
+
         }
 
     }

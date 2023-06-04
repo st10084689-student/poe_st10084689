@@ -12,6 +12,7 @@
     android:elevation="10dp"
     android:background="@drawable/edit_text_custom">
 <RelativeLayout
+    android:id="@+id/relativeCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/list_task_item"

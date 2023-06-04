@@ -136,6 +136,60 @@
                     android:padding="10dp"
                     android:layout_below="@id/categoriesTxt"
                     />
+
+                <TextView
+                    android:id="@+id/TimeTxt"
+                    android:layout_below="@id/categoryRecyclerFragView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timer"
+                    android:textSize="24dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans_variable_font_wdth"/>
+
+                <TextView
+                    android:id="@+id/Timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="35dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/TimeTxt"
+                    android:text="0"/>
+                <RelativeLayout
+                    android:layout_below="@id/Timer"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/StartTime"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:text="Start"
+                        android:background="@drawable/list_task_item"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/EndTime"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/StartTime"
+                    android:text="Stop"
+                    android:background="@drawable/list_task_item"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"/>
+
+                </RelativeLayout>
+
             </RelativeLayout>
 
     </ScrollView>

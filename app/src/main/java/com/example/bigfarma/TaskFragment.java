@@ -1,14 +1,17 @@
 package com.example.bigfarma;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,8 @@ public class TaskFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
 
     private RecyclerView TaskRecycler;
+
+    private RelativeLayout NewTask;
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -63,26 +68,30 @@ public class TaskFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task, container, false);
         innit(view);
-        blah(view);
+        ListAdapter(view);
         return view;
     }
     public void innit(View view){
         TaskRecycler = view.findViewById(R.id.taskRecyclerView);
+        NewTask = view.findViewById(R.id.NewCard);
+        NewTask.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), NewTask.class);
+                        startActivity(intent);
+
+
+                    }
+                });
+
     }
 
-    public void blah(View view){
+    public void ListAdapter(View view){
 
         ListTaskRecyclerAdapter adapter = new ListTaskRecyclerAdapter(view.getContext());
 
         TaskRecycler.setAdapter(adapter);
         TaskRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(),TaskRecycler.VERTICAL,false));
-
-//         ArrayList<Category> categories = new ArrayList<>();
-//         categories.add(new Category("HomeWork","https://www.bing.com/ck/a?!&&p=cb7ddccb76127e66JmltdHM9MTY4NTQwNDgwMCZpZ3VpZD0xMjU5ZDZiZS1mMTk1LTY3YTAtMmJmYS1jNDc0ZjA2ODY2ZTMmaW5zaWQ9NTUyNQ&ptn=3&hsh=3&fclid=1259d6be-f195-67a0-2bfa-c474f06866e3&u=a1L2ltYWdlcy9zZWFyY2g_cT1JTUFHRVMgT0YgSE9NRVdPUksmRk9STT1JUUZSQkEmaWQ9ODIxRjUyNjAwQ0E5NDlCRTZFQkQ0OEQ4RDQ1RkE1QkFFMTFGQzdCRA&ntb=1"));
-//        categories.add(new Category("WeekEnd","https://www.google.com/imgres?imgurl=https%3A%2F%2Fectutoring.com%2Fwp-content%2Fuploads%2F2022%2F02%2FADHD-Homework-Help-at-ectutoring.com_.png&tbnid=iENCQNbdZJF5TM&vet=12ahUKEwiC67jz_Zz_AhW9pycCHXbYD0oQMygCegUIARDkAQ..i&imgrefurl=https%3A%2F%2Fectutoring.com%2Fadhd-homework&docid=gELNzoII70chwM&w=1200&h=628&q=homework&ved=2ahUKEwiC67jz_Zz_AhW9pycCHXbYD0oQMygCegUIARDkAQ"));
-//        categories.add(new Category("It Job ","C:\\Users\\jelid\\OneDrive\\Pictures\\Saved Pictures\\anime-graffiti-cars-lime-green-nsx.webp"));
-//        categories.add(new Category("HomeWork","C:\\Users\\jelid\\OneDrive\\Pictures\\Saved Pictures\\anime-graffiti-cars-lime-green-nsx.webp"));
-
         Utility util = new Utility();
         ArrayList<Task> tasks = new ArrayList<>();
         tasks = util.getNewTask();

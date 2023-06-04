@@ -3,6 +3,7 @@ package com.example.bigfarma;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.compose.foundation.interaction.DragInteraction;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainViewFragment extends Fragment {
 
@@ -21,6 +25,8 @@ public class MainViewFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    //TODO add category icons
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -28,6 +34,14 @@ public class MainViewFragment extends Fragment {
     private RecyclerView categoryRecView;
 
     private RelativeLayout newTask;
+
+    private boolean IsRunning;
+
+    private Button StartButton,StopButton;
+
+    private TextView timerTextView;
+
+    private long startTime;
 
     public MainViewFragment() {
         // Required empty public constructor
@@ -78,6 +92,12 @@ public class MainViewFragment extends Fragment {
     public void innit(View view){
         categoryRecView = view.findViewById(R.id.categoryRecyclerFragView);
         newTask = view.findViewById(R.id.NewCard);
+        timerTextView = view.findViewById(R.id.Timer);
+        StartButton = view.findViewById(R.id.StartTime);
+        StopButton = view.findViewById(R.id.EndTime);
+        IsRunning = false;
+        startTime = 0;
+
 
         newTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +106,30 @@ public class MainViewFragment extends Fragment {
                 startActivity(intent);
 
 
+            }
+        });
+
+        StartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!IsRunning) {
+                    startTimer();
+                }
+            }
+        });
+        StopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (IsRunning) {
+                    stopTimer();
+                }
+            }
+        });
+        timerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startTime=0;
+                timerTextView.setText("00:00:000");
             }
         });
 
@@ -98,4 +142,43 @@ public class MainViewFragment extends Fragment {
         categories = util.getAllCategories();
         adapter.setCategories(categories);
     }
+
+
+
+    private void startTimer() {
+        IsRunning = true;
+        startTime = System.currentTimeMillis();
+
+        // Start updating the UI
+        updateTimerUI();
+    }
+
+    private void stopTimer() {
+        IsRunning = false;
+    }
+
+    private void updateTimerUI() {
+
+
+        // Calculate the elapsed time
+        long currentTime = System.currentTimeMillis();
+        long elapsedTime = currentTime - startTime;
+
+        // Convert the elapsed time to minutes, seconds, and milliseconds
+        int minutes = (int) (elapsedTime / 60000);
+        int seconds = (int) (elapsedTime % 60000 / 1000);
+        int milliseconds = (int) (elapsedTime % 1000);
+
+        // Update the timer TextView
+        String timeString = String.format(Locale.getDefault(), "%02d:%02d:%03d", minutes, seconds, milliseconds);
+        timerTextView.setText(timeString);
+
+        // If the timer is still running, schedule the next UI update after a small delay
+        if (IsRunning) {
+            timerTextView.postDelayed(this::updateTimerUI, 10);
+        }
+
+    }
+
+
 }

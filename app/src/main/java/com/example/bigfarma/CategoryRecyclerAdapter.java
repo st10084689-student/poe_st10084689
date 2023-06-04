@@ -1,6 +1,7 @@
 package com.example.bigfarma;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,8 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
         return holder;
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
@@ -49,6 +52,9 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
         Glide.with(context)
                 .asBitmap().load(categories.get(position).getImageUrl())
                         .into(holder.CategoryImage);
+
+
+        holder.CategoryImage.setBackgroundResource(categories.get(position).getImageBackgroundUrl());
     }
 
     @Override
@@ -64,7 +70,7 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
         public ViewHolder(View itemView){
             super(itemView);
 
-            CategoryImage = itemView.findViewById(R.id.categoryImage);
+            CategoryImage = itemView.findViewById(R.id.backgroundImage);
             CategoryText = itemView.findViewById(R.id.categoryName);
         }
 

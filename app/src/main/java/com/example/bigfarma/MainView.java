@@ -49,6 +49,9 @@ public class MainView extends AppCompatActivity {
                 TaskFragment ToList= new TaskFragment();
                 fragmentTransaction.replace(R.id.fragmentContainer, ToList);
                 fragmentTransaction.commit();
+                Main.setBackground(null);
+                About.setBackground(null);
+                List.setBackgroundResource(R.drawable.green_circle);
             }
         });
 
@@ -59,6 +62,9 @@ public class MainView extends AppCompatActivity {
                 AboutFragment ToAbout= new AboutFragment();
                 fragmentTransaction.replace(R.id.fragmentContainer, ToAbout);
                 fragmentTransaction.commit();
+                Main.setBackground(null);
+                List.setBackground(null);
+                About.setBackgroundResource(R.drawable.green_circle);
             }
         });
 
@@ -69,6 +75,9 @@ public class MainView extends AppCompatActivity {
                 MainViewFragment ToMain= new MainViewFragment();
                 fragmentTransaction.replace(R.id.fragmentContainer, ToMain);
                 fragmentTransaction.commit();
+                About.setBackground(null);
+                List.setBackground(null);
+                Main.setBackgroundResource(R.drawable.green_circle);
             }
         });
     }
