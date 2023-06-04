@@ -29,6 +29,8 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
     private ArrayList<Task> tasks = new ArrayList<>();
     private Context context;
 
+    private ArrayList<Category> categories = new ArrayList<>();
+
     public ListTaskRecyclerAdapter(Context context) {
         this.context = context;
     }
@@ -56,9 +58,10 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
             holder.BackgroundImage.setBackground(null);
             Log.d(TAG, "onBindViewHolder: "+imagepath);
             Picasso.get().load(file).into(holder.BackgroundImage);
+
         }
         else{
-            holder.BackgroundImage.setBackground(null);
+
                     Glide.with(context).asBitmap()
                .load(tasks.get(position).getImageUrl())
                             .centerCrop()
@@ -66,6 +69,13 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
         }
 
 
+        int pos = tasks.get(position).getCategoryId();
+
+
+        Glide.with(context).asBitmap()
+                .load(categories.get(pos).getImageUrl())
+                .centerCrop()
+                .into(holder.CategoryImage);
 
     }
 
@@ -83,7 +93,7 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
 
         private TextView Time;
 
-        private ImageView Category_Image;
+        private ImageView CategoryImage;
 
         private RelativeLayout relativelayout;
 
@@ -94,15 +104,16 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
             Name = itemView.findViewById(R.id.TaskName);
             Date = itemView.findViewById(R.id.DateTxt);
             Time = itemView.findViewById(R.id.TimeTxt);
-            Category_Image = itemView.findViewById(R.id.CategoryImage);
+            CategoryImage = itemView.findViewById(R.id.CategoryImage);
             relativelayout = itemView.findViewById(R.id.relativeCard);
 
         }
 
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
+    public void setTasks(ArrayList<Task> tasks,ArrayList<Category> categories) {
         this.tasks = tasks;
+        this.categories= categories;
         notifyDataSetChanged();
     }
 }

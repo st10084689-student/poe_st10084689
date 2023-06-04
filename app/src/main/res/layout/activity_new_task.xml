@@ -207,6 +207,14 @@
                 android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"/>
 
+            <Spinner
+
+                android:layout_below="@id/capturedImage"
+                android:id="@+id/spinner"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 <!--            <RelativeLayout-->
 <!--                android:id="@+id/bottomRelativelayout"-->
 <!--                android:layout_width="wrap_content"-->
@@ -273,7 +281,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/capturedImage"
+                android:layout_below="@id/spinner"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"

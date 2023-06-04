@@ -38,8 +38,8 @@ public class Utility {
         return newTask;
     }
 
-    public static void setNewTask(int _TASK_ID,String _Title, String _ImageUrl,String _Description,String _EndDate,String _StartDate,String _Time) {
-        newTask.add(new Task(_TASK_ID, _Title,  _ImageUrl, _Description, _EndDate, _StartDate, _Time));
+    public static void setNewTask(int _TASK_ID,String _Title, String _ImageUrl,String _Description,String _EndDate,String _StartDate,String _Time,int CATEGORY_ID) {
+        newTask.add(new Task(_TASK_ID, _Title,  _ImageUrl, _Description, _EndDate, _StartDate, _Time,CATEGORY_ID));
     }
 
     public static int getTaskId() {
@@ -85,10 +85,11 @@ public class Utility {
         String EndDate = "17/04/2023";
         String StartDate = "17/04/2023";
         String Time = "15:00";
+        int CategoryId = 0;
 
         TASK_ID++;
 
-        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time));
+        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time,CategoryId));
 
          Title="Homework";
          ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ2HCQwNOetaK7RAV-XTjKdwNsOlGce2D_QljqHUMI&s";
@@ -96,9 +97,10 @@ public class Utility {
          EndDate = "15/03/2023";
          StartDate = "15/02/2023";
          Time = "14:00";
+         CategoryId = 1;
         TASK_ID++;
 
-        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time));
+        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time,CategoryId));
 
 
         Title="Do the Dishes";
@@ -107,9 +109,10 @@ public class Utility {
         EndDate = "09/03/2023";
         StartDate = "01/03/2023";
         Time = "12:00";
+        CategoryId = 2;
         TASK_ID++;
 
-        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time));
+        newTask.add(new Task(TASK_ID, Title, ImageUrl,Description,EndDate,StartDate,Time,CategoryId));
 
     }
 }

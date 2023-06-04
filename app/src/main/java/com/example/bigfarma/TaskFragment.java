@@ -94,7 +94,9 @@ public class TaskFragment extends Fragment {
         TaskRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(),TaskRecycler.VERTICAL,false));
         Utility util = new Utility();
         ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Category> categories = new ArrayList<>();
         tasks = util.getNewTask();
-        adapter.setTasks(tasks);
+        categories = util.getAllCategories();
+        adapter.setTasks(tasks,categories);
     }
 }

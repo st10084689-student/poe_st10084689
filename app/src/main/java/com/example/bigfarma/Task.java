@@ -16,14 +16,17 @@ public class Task {
 
     private String Time;
 
-    public Task(int id, String title, String imageUrl, String desc, String startDate, String endDate, String time) {
+    private int categoryId;
+
+    public Task(int id, String title, String imageUrl, String desc, String startDate, String endDate, String time, int categoryId) {
         this.id = id;
         this.title = title;
-        this.ImageUrl = imageUrl;
-        this.Desc = desc;
-        this.StartDate = startDate;
-        this.EndDate = endDate;
-        this.Time = time;
+        ImageUrl = imageUrl;
+        Desc = desc;
+        StartDate = startDate;
+        EndDate = endDate;
+        Time = time;
+        this.categoryId = categoryId;
     }
 
     public int getId() {
@@ -80,5 +83,13 @@ public class Task {
 
     public void setTime(String time) {
         Time = time;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

@@ -147,7 +147,9 @@ public class MainViewFragment extends Fragment {
 
     private void startTimer() {
         IsRunning = true;
-        startTime = System.currentTimeMillis();
+        if(startTime==0){
+            startTime = System.currentTimeMillis();
+        }
 
         // Start updating the UI
         updateTimerUI();
