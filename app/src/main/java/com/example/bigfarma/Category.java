@@ -8,6 +8,16 @@ public class Category{
 
     private int ImageBackgroundUrl;
 
+    private int totalDuration;
+
+    public int getTotalDuration() {
+        return totalDuration;
+    }
+
+    public void setTotalDuration(int totalDuration) {
+        this.totalDuration = totalDuration;
+    }
+
     public Category(int id, String name, int imageUrl, int imageBackgroundUrl) {
         this.id = id;
         Name = name;

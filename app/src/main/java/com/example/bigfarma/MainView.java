@@ -21,8 +21,6 @@ public class MainView extends AppCompatActivity {
 
     private TextView List,About,Main;
 
-
-
     private String TAG = "Main View";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

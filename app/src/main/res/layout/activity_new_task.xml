@@ -159,33 +159,59 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/TimeRelativeLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dateRelativeLayout"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="30dp">
-        <TextView
-            android:id="@+id/TimeTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_variable_font_wdth"
-            android:text="Time:"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-        <EditText
-            android:id="@+id/TimeInput"
-            android:layout_below="@id/TimeTxt"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/edit_text_custom"
-            android:layout_marginRight="20dp"
-            android:paddingLeft="20dp"
-            android:focusable="false"
-            android:onClick="showTimePickerDialog"
-            />
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/TimeRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateRelativeLayout"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <TextView
+                    android:id="@+id/TimeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_variable_font_wdth"
+                    android:text="Time:"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:layout_alignParentTop="true" />
+
+                <EditText
+                    android:id="@+id/TimeInput"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text_custom"
+                    android:focusable="false"
+                    android:onClick="showTimePickerDialog"
+                    android:paddingLeft="20dp"
+                    android:layout_below="@+id/TimeTxt"
+                     />
+
+                <TextView
+                    android:id="@+id/DurationTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_variable_font_wdth"
+                    android:text="Duration:"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <EditText
+                    android:id="@+id/DurationInput"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text_custom"
+                    android:layout_alignParentEnd="true"
+                    android:onClick="showTimePickerDialog"
+                    android:paddingLeft="20dp"
+                    android:layout_below="@+id/DurationTxt"
+                    />
+
+            </RelativeLayout>
 
         <ImageButton
             android:id="@+id/cameraPrompt"

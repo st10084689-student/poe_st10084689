@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -21,7 +23,11 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
     private static final String TAG = "CategoryRecyclerAdapter";
 
     private ArrayList<Category> categories = new ArrayList<>();
+
+    private ArrayList<Task> tasks = new ArrayList<>();
     private Context context;
+
+    private LayoutInflater inflater ;
 
     public CategoryRecyclerAdapter(Context context) {
         this.context = context;
@@ -38,14 +44,18 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
 
         holder.CategoryText.setText(categories.get(position).getName());
-        holder.CategoryText.setOnClickListener(new View.OnClickListener() {
+
+        getCategoryDuration();
+
+        holder.categoryCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"hallo ", Toast.LENGTH_SHORT).show();
+                showCustomToast("Duration:"+ categories.get(position).getTotalDuration(),view);
+
             }
         });
 
@@ -67,17 +77,53 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
         private TextView CategoryText;
 
+        private CardView categoryCard;
+
         public ViewHolder(View itemView){
             super(itemView);
 
             CategoryImage = itemView.findViewById(R.id.backgroundImage);
             CategoryText = itemView.findViewById(R.id.categoryName);
+            categoryCard = itemView.findViewById(R.id.CategoryCard);
         }
 
     }
 
-    public void setCategories(ArrayList<Category> categories) {
+    public void setCategories(ArrayList<Category> categories,ArrayList<Task> tasks) {
         this.categories = categories;
+        this.tasks = tasks;
         notifyDataSetChanged();
+    }
+
+    private void showCustomToast( String message, View view) {
+        inflater = LayoutInflater.from(context);
+        View layout = inflater.inflate(R.layout.toast_custom, (ViewGroup) view.findViewById(R.id.toast_custom_layout));
+
+        TextView toastText = layout.findViewById(R.id.message);
+        toastText.setText(message);
+
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
+
+    public void getCategoryDuration(){
+        for (Category category : categories) {
+            int categoryId = category.getId();
+            int totalDuration = 0;
+            Log.d(TAG, "categoryId"+categoryId);
+
+
+            for (Task task : tasks) {
+                Log.d(TAG, "task.getCategoryId() :"+task.getCategoryId() );
+                if (task.getCategoryId() == categoryId) {
+                    totalDuration += task.getDuration();
+                    Log.d(TAG, "getCategoryDuration: "+ totalDuration+"id:"+task.getCategoryId());
+                }
+            }
+
+            category.setTotalDuration(totalDuration);
+        }
     }
 }

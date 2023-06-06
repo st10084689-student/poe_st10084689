@@ -2,6 +2,7 @@ package com.example.bigfarma;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Task {
     private int id;
@@ -12,13 +13,17 @@ public class Task {
 
     private String StartDate;
 
-    private String EndDate;
+    private Date EndDate;
 
     private String Time;
 
     private int categoryId;
 
-    public Task(int id, String title, String imageUrl, String desc, String startDate, String endDate, String time, int categoryId) {
+
+
+    private int Duration;
+
+    public Task(int id, String title, String imageUrl, String desc, String startDate, Date endDate, String time, int categoryId, int _Duration) {
         this.id = id;
         this.title = title;
         ImageUrl = imageUrl;
@@ -27,6 +32,8 @@ public class Task {
         EndDate = endDate;
         Time = time;
         this.categoryId = categoryId;
+
+        this.Duration = _Duration;
     }
 
     public int getId() {
@@ -69,11 +76,11 @@ public class Task {
         StartDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         EndDate = endDate;
     }
 
@@ -91,5 +98,13 @@ public class Task {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public int getDuration() {
+        return Duration;
+    }
+
+    public void setDuration(int duration) {
+        Duration = duration;
     }
 }

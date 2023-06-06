@@ -47,6 +47,8 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
     EditText Desc;
     EditText StartDate;
     EditText EndDate;
+
+    EditText Duration;
     EditText Time;
 
     ImageButton camera;
@@ -56,6 +58,8 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
     private Spinner category;
 
     private int categoryId;
+
+    private Date EndDateVar;
 
 //TODO add a category spinner
 
@@ -111,6 +115,7 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
     }
 
     public void innit() {
+        Duration=findViewById(R.id.DurationInput);
         Title = findViewById(R.id.titeInput);
         Desc = findViewById(R.id.DecriptionInput);
         StartDate = findViewById(R.id.StartDateEditTxt);
@@ -236,6 +241,7 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // Set selected date to the EditText field
                         calendar.set(year, monthOfYear, dayOfMonth);
+                        EndDateVar = new Date(year,month,day);
                         EndDate.setText(dateFormat.format(calendar.getTime()));
                     }
                 }, year, month, day);
@@ -250,9 +256,10 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
 
         Utility util = new Utility();
         int id =  util.getTaskId();
+        int DurationInt =  Integer.parseInt(Duration.getText().toString());
 //        ArrayList<Task> This = new ArrayList<>();
 //        This.add(new Task(id, Title.getText().toString(), Desc.getText().toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString()));
-        util.setNewTask(id, Title.getText().toString(), currentPhotoPath.toString(),Desc.getText().toString(),EndDate.getText().toString(),StartDate.getText().toString(),Time.getText().toString(),categoryId);
+        util.setNewTask(id, Title.getText().toString(), currentPhotoPath.toString(),Desc.getText().toString(),EndDateVar,StartDate.getText().toString(),Time.getText().toString(),categoryId,DurationInt);
 
         for (Task task : util.getNewTask()) {
             System.out.println("Task ID: " + task.getId());

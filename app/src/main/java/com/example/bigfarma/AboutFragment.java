@@ -2,11 +2,19 @@ package com.example.bigfarma;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,10 +23,22 @@ import android.view.ViewGroup;
  */
 public class AboutFragment extends Fragment {
 
+    private EditText MinimumDailyGoals, MaximumDailyGoals;
+
+    private AppCompatButton MaxInsertButton,MinInsertButton;
+
+    private Goal goals;
+
+    private int maximum;
+    private int minimum;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private static final String TAG = "AboutFragment";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +79,49 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        View view =  inflater.inflate(R.layout.fragment_about, container, false);
+        innit(view);
+        return view;
+    }
+
+    public void innit(View view){
+
+        MinimumDailyGoals= view.findViewById(R.id.setMinGoals);
+        MaximumDailyGoals= view.findViewById(R.id.setMaxGoals);
+        MaxInsertButton= view.findViewById(R.id.insertMaxButton);
+        MinInsertButton= view.findViewById(R.id.insertMinButton);
+        goals = new Goal();
+
+
+        MaxInsertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                maximum = Integer.parseInt(MaximumDailyGoals.getText().toString());
+                Log.d(TAG, "onClick: "+maximum);
+                if(maximum>=minimum||maximum==0) {
+                    goals.setMaximumGoal(maximum);
+                    Toast.makeText(view.getContext(),"Coolbeans\uD83E\uDED8",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(view.getContext(),"The maximum cant be less than the minimum",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        MinInsertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: ");
+                minimum = Integer.parseInt(MinimumDailyGoals.getText().toString());
+                if(minimum<=maximum) {
+                    goals.setMinimumGoal(minimum);
+                    Toast.makeText(view.getContext(),"Coolbeans\uD83E\uDED8" ,Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(view.getContext(),"The maximum cant be less than the minimum",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
     }
 }

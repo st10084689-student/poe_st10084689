@@ -20,14 +20,20 @@ import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.internal.platform.ConscryptPlatform;
 
 public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecyclerAdapter.ViewHolder> {
     private static final String TAG = "ListTaskRecyclerAdapter";
 
     private ArrayList<Task> tasks = new ArrayList<>();
     private Context context;
+
+    private LayoutInflater inflater ;
+
 
     private ArrayList<Category> categories = new ArrayList<>();
 
@@ -45,12 +51,25 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
         Log.d(TAG, "onBindViewHolder: called");
+        SimpleDateFormat DateFormate = new SimpleDateFormat("dd-MM-yyyy");
+        String DateString = DateFormate.format(tasks.get(position).getEndDate());
         holder.Name.setText(tasks.get(position).getTitle());
         String imagepath= tasks.get(position).getImageUrl();
-        holder.Date.setText(tasks.get(position).getEndDate());
+        holder.Date.setText(DateString);
         holder.Time.setText(tasks.get(position).getTime());
+
+        holder.relativelayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showCustomToast("Description:"+tasks.get(position).getDesc()+"\n" +
+                        "StartDate:"+tasks.get(position).getStartDate()+"\n" +
+                        "Duration:"+ tasks.get(position).getDuration(),view);
+            }
+        });
+
+
 
         File file = new File(imagepath);
         if (imagepath != null && !imagepath.isEmpty()&&tasks.get(position).getId()>3) {
@@ -92,13 +111,14 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
         private TextView Date;
 
         private TextView Time;
-
         private ImageView CategoryImage;
 
         private RelativeLayout relativelayout;
 
+
         public ViewHolder(View itemView){
             super(itemView);
+            context= itemView.getContext();
 
             BackgroundImage = itemView.findViewById(R.id.Image);
             Name = itemView.findViewById(R.id.TaskName);
@@ -107,8 +127,22 @@ public class ListTaskRecyclerAdapter extends RecyclerView.Adapter<ListTaskRecycl
             CategoryImage = itemView.findViewById(R.id.CategoryImage);
             relativelayout = itemView.findViewById(R.id.relativeCard);
 
+
         }
 
+    }
+
+    private void showCustomToast( String message, View view) {
+        inflater = LayoutInflater.from(context);
+        View layout = inflater.inflate(R.layout.toast_custom, (ViewGroup) view.findViewById(R.id.toast_custom_layout));
+
+        TextView toastText = layout.findViewById(R.id.message);
+        toastText.setText(message);
+
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 
     public void setTasks(ArrayList<Task> tasks,ArrayList<Category> categories) {

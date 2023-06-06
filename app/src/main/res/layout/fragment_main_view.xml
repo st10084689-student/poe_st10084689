@@ -72,6 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/imagefamer"/>
+
                 <TextView
                     android:id="@+id/titleCard"
                     android:layout_toRightOf="@id/image"
@@ -83,15 +84,27 @@
                     android:layout_height="wrap_content"
                     android:text="Pick the plants"/>
 
+                <TextView
+                    android:id="@+id/due"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Due:"
+                    android:textSize="15dp"
+                    android:layout_below="@id/titleCard"
+                    android:layout_toRightOf="@id/image"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Due: 15/02/2022 14:00"
                     android:textSize="15dp"
                     android:layout_below="@id/titleCard"
-                    android:layout_toRightOf="@id/image"
-                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/due"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginTop="15dp"
                     android:textColor="@color/black"/>
 
@@ -107,9 +120,9 @@
                     android:textColor="@color/lighter_green"/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cow"
+                    android:id="@+id/categoryImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"/>

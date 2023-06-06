@@ -8,15 +8,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Locale;
+
+import okhttp3.internal.Util;
 
 public class MainViewFragment extends Fragment {
 
@@ -33,15 +43,28 @@ public class MainViewFragment extends Fragment {
 
     private RecyclerView categoryRecView;
 
-    private RelativeLayout newTask;
+    private RelativeLayout newTask,UpcomingCard;
 
     private boolean IsRunning;
 
     private Button StartButton,StopButton;
 
-    private TextView timerTextView;
+    private TextView timerTextView,TitleCardText,DateCardText;
+
+    private ImageView categoryView, image;
+
+    private ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
+
+    private  Utility util ;
 
     private long startTime;
+
+    private SimpleDateFormat DateFormat;
+
+    private LayoutInflater inflater;
+
+    private static final String TAG = "MainViewFragment";
 
     public MainViewFragment() {
         // Required empty public constructor
@@ -81,7 +104,9 @@ public class MainViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_view, container, false);
+        util = new Utility();
         innit(view);
+        SetCardView();
         return(view);
     }
 //    public void ToList(View view){
@@ -90,6 +115,9 @@ public class MainViewFragment extends Fragment {
 //    }
 
     public void innit(View view){
+        Utility util = new Utility();
+        tasks = util.getNewTask();
+        categories = util.getAllCategories();
         categoryRecView = view.findViewById(R.id.categoryRecyclerFragView);
         newTask = view.findViewById(R.id.NewCard);
         timerTextView = view.findViewById(R.id.Timer);
@@ -97,6 +125,12 @@ public class MainViewFragment extends Fragment {
         StopButton = view.findViewById(R.id.EndTime);
         IsRunning = false;
         startTime = 0;
+        DateCardText = view.findViewById(R.id.Date);
+        TitleCardText = view.findViewById(R.id.titleCard);
+        categoryView = view.findViewById(R.id.categoryImage);
+        image = view.findViewById(R.id.image);
+        DateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        UpcomingCard = view.findViewById(R.id.UpcomingCard);
 
 
         newTask.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +139,24 @@ public class MainViewFragment extends Fragment {
                 Intent intent = new Intent(view.getContext(), NewTask.class);
                 startActivity(intent);
 
+
+            }
+        });
+
+        UpcomingCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inflater = LayoutInflater.from(view.getContext());
+                View layout = inflater.inflate(R.layout.toast_custom, (ViewGroup) view.findViewById(R.id.toast_custom_layout));
+                TextView toastText = layout.findViewById(R.id.message);
+                toastText.setText("Description:"+tasks.get(0).getDesc()+"\n" +
+                        "StartDate:"+tasks.get(0).getStartDate()+"\n" +
+                        "Duration:"+ tasks.get(0).getDuration()+"hours");
+
+                Toast toast = new Toast(view.getContext());
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
 
             }
         });
@@ -137,12 +189,42 @@ public class MainViewFragment extends Fragment {
 
         categoryRecView.setAdapter(adapter);
         categoryRecView.setLayoutManager(new LinearLayoutManager(view.getContext(),categoryRecView.HORIZONTAL,false));
-        Utility util = new Utility();
+
         ArrayList<Category> categories = new ArrayList<>();
         categories = util.getAllCategories();
-        adapter.setCategories(categories);
+        adapter.setCategories(categories,tasks);
     }
 
+
+    public void SetCardView(){
+
+        Collections.sort(tasks, new Comparator<Task>() {
+
+            public int compare(Task task1, Task task2) {
+                return task2.getEndDate().compareTo(task1.getEndDate());
+            }
+        });
+
+
+        Task highestTask = tasks.get(0);
+        String date = DateFormat.format(highestTask.getEndDate());
+        Log.d(TAG, "SetCardView: "+ highestTask.getTitle());
+        Log.d(TAG, "SetCardView: "+ highestTask.getEndDate());
+        DateCardText.setText(date);
+                TitleCardText.setText(highestTask.getTitle());
+
+        Glide.with(MainViewFragment.this).asBitmap()
+                .load(highestTask.getImageUrl())
+                .centerCrop()
+                .into(image);
+        int categoryNumber = highestTask.getCategoryId();
+        Glide.with(MainViewFragment.this).asBitmap()
+                .load(categories.get(categoryNumber).getImageUrl())
+                .centerCrop()
+                .into(categoryView);
+
+
+    }
 
 
     private void startTimer() {

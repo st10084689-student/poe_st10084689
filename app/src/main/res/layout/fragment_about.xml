@@ -6,11 +6,80 @@
     tools:context=".AboutFragment">
 
     <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/MinGoalTxt"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="About Sectio"
-        android:textSize="30sp"/>
+        android:textSize="30dp"
+        android:text="Set Minimum Daily Goal:"/>
 
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_below="@id/MinGoalTxt"
+        android:id="@+id/minimumRelative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
 
+    <EditText
+        android:padding="5dp"
+        android:id="@+id/setMinGoals"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="0"
+        android:background="@drawable/goal_edit_text"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/insertMinButton"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/setMinGoals"
+            android:background="@drawable/goal_btn"
+            android:text="Insert"
+            android:layout_height="50dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/minimumRelative"
+        android:id="@+id/MaxGoalTxt"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_variable_font_wdth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Set Maximum Daily Goal:"/>
+
+    <RelativeLayout
+        android:id="@+id/maximumRelative"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/MaxGoalTxt">
+
+        <EditText
+            android:id="@+id/setMaxGoals"
+            android:padding="5dp"
+            android:text="0"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:textSize="30sp"
+            android:background="@drawable/goal_edit_text"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/insertMaxButton"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/setMaxGoals"
+            android:background="@drawable/goal_btn"
+            android:text="Insert"
+            android:layout_height="50dp"/>
+    </RelativeLayout>
 </RelativeLayout>
